@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TIES Communications, Inc. — Secure IT infrastructure consulting, network design, and modernization services for DoD and mission-critical environments. SBA Certified WOSB. CMMC Level 1.">
+<meta name="robots" content="index, follow">
+<title>TIES Communications | tiesforceone | Problems Solved, Not Guessed</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy-deepest: #021A37;
+    --navy-deep:    #042C53;
+    --navy-mid:     #0C447C;
+    --navy-accent:  #185FA5;
+    --blue-bright:  #378ADD;
+    --blue-light:   #85B7EB;
+    --blue-pale:    #B5D4F4;
+    --blue-ghost:   #E6F1FB;
+    --white:        #FFFFFF;
+    --gray-100:     #F7F8FA;
+    --gray-200:     #EEF0F3;
+    --gray-300:     #D4D8DE;
+    --gray-500:     #6B7280;
+    --gray-700:     #374151;
+    --gray-900:     #111827;
+    --green:        #1D9E75;
+    --amber:        #BA7517;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray-900);
+    background: var(--white);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--navy-deep);
+    padding: 13px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--navy-mid);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-orbit {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--blue-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nav-orbit-inner {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1.5px solid var(--blue-light);
+  }
+
+  .nav-name {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+  }
+
+  .nav-name .ties { color: var(--blue-ghost); font-size: 15px; font-weight: 600; }
+  .nav-name .comm { color: var(--blue-bright); font-size: 15px; font-weight: 600; }
+  .nav-dba {
+    color: var(--navy-accent);
+    font-size: 10px;
+    margin-left: 8px;
+    border: 0.5px solid var(--navy-accent);
+    padding: 1px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.07em;
+    vertical-align: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--blue-light);
+    font-size: 13px;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--blue-ghost); }
+
+  .nav-cta {
+    background: var(--navy-accent);
+    color: var(--blue-ghost) !important;
+    font-size: 12px;
+    padding: 7px 16px;
+    border-radius: 3px;
+    transition: background 0.15s !important;
+  }
+
+  .nav-cta:hover { background: var(--blue-bright) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy-deep);
+    padding: 60px 40px 52px;
+    border-bottom: 1px solid var(--navy-mid);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--navy-mid);
+    border: 0.5px solid var(--navy-accent);
+    border-radius: 3px;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+
+  .hero-badge span {
+    color: var(--blue-light);
+    font-size: 10px;
+    letter-spacing: 0.09em;
+  }
+
+  .hero-badge svg { color: var(--blue-light); flex-shrink: 0; }
+
+  h1 {
+    color: var(--blue-ghost);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    max-width: 580px;
+  }
+
+  .hero-tagline {
+    color: var(--blue-bright);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-sub {
+    color: var(--blue-light);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 540px;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--navy-accent);
+    color: var(--blue-ghost);
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--blue-bright); color: var(--white); }
+
+  .btn-secondary {
+    border: 0.5px solid var(--blue-bright);
+    color: var(--blue-light);
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: border-color 0.15s, color 0.15s;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover { border-color: var(--blue-ghost); color: var(--blue-ghost); }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--navy-mid);
+    padding: 10px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .trust-item {
+    color: var(--blue-pale);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .trust-dot { color: var(--navy-accent); font-size: 14px; line-height: 1; }
+
+  .trust-muted { color: var(--blue-light); font-size: 11px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 44px 40px; }
+
+  .section-label {
+    color: var(--gray-500);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .section-title {
+    color: var(--gray-900);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+
+  .bg-white  { background: var(--white); border-bottom: 1px solid var(--gray-200); }
+  .bg-gray   { background: var(--gray-100); border-bottom: 1px solid var(--gray-200); }
+  .bg-navy   { background: var(--navy-deep); }
+
+  /* ── CAPABILITIES GRID ── */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .cap-card {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .cap-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--blue-ghost);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .cap-icon svg { color: var(--navy-accent); }
+
+  .cap-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 5px;
+  }
+
+  .cap-desc {
+    font-size: 11px;
+    color: var(--gray-500);
+    line-height: 1.55;
+  }
+
+  /* ── ENGAGEMENT GRID ── */
+  .eng-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .eng-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-left: 3px solid var(--navy-accent);
+    padding: 16px 18px;
+  }
+
+  .eng-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 6px;
+  }
+
+  .eng-desc { font-size: 12px; color: var(--gray-500); line-height: 1.55; }
+
+  /* ── TWO COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ── COMPLIANCE LIST ── */
+  .compliance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .compliance-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .compliance-item svg { flex-shrink: 0; margin-top: 2px; }
+
+  .compliance-item p { font-size: 13px; color: var(--gray-700); line-height: 1.5; }
+
+  /* ── PAST PERFORMANCE ── */
+  .past-perf-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .past-perf-title { font-size: 13px; font-weight: 600; color: var(--gray-900); margin-bottom: 3px; }
+  .past-perf-sub { font-size: 11px; color: var(--gray-500); margin-bottom: 10px; }
+
+  .past-perf-list { display: flex; flex-direction: column; gap: 6px; }
+
+  .past-perf-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+  }
+
+  .past-perf-item svg { flex-shrink: 0; margin-top: 3px; color: var(--blue-bright); }
+  .past-perf-item p { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+
+  /* ── PERSONNEL ── */
+  .personnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  @media (max-width: 680px) { .personnel-grid { grid-template-columns: 1fr; } }
+
+  .person-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 18px;
+  }
+
+  .person-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .person-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--blue-ghost);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy-mid);
+    flex-shrink: 0;
+  }
+
+  .person-name { font-size: 14px; font-weight: 600; color: var(--gray-900); margin-bottom: 2px; }
+  .person-role { font-size: 11px; color: var(--gray-500); }
+  .person-bio  { font-size: 12px; color: var(--gray-500); line-height: 1.65; margin-bottom: 10px; }
+  .person-email { font-size: 11px; color: var(--navy-accent); }
+
+  /* ── NEWS ── */
+  .news-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .news-item {
+    border: 1px solid var(--gray-200);
+    border-left: 3px solid var(--navy-accent);
+    padding: 14px 16px;
+  }
+
+  .news-item.green { border-left-color: var(--green); }
+
+  .news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 5px;
+  }
+
+  .news-title { font-size: 13px; font-weight: 600; color: var(--gray-900); }
+
+  .news-date {
+    font-size: 10px;
+    color: var(--gray-500);
+    white-space: nowrap;
+    background: var(--gray-100);
+    padding: 2px 7px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .news-body { font-size: 12px; color: var(--gray-500); line-height: 1.55; }
+
+  /* ── CTA / FOOTER ── */
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 680px) { .cta-inner { grid-template-columns: 1fr; } }
+
+  .cta-title { color: var(--blue-ghost); font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .cta-sub { color: var(--blue-light); font-size: 13px; line-height: 1.65; max-width: 460px; }
+
+  .cta-contacts { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+
+  .cta-contact-line {
+    color: var(--blue-pale);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cta-contact-line svg { flex-shrink: 0; }
+
+  .footer-divider {
+    border-top: 1px solid var(--navy-mid);
+    padding-top: 20px;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  .footer-brand-name { color: var(--blue-pale); font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .footer-brand-dba  { color: var(--blue-bright); font-size: 11px; margin-bottom: 2px; }
+  .footer-brand-url  { color: var(--navy-accent); font-size: 11px; }
+
+  .footer-cols { display: flex; gap: 28px; }
+
+  .footer-col-label {
+    color: var(--blue-light);
+    font-size: 10px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .footer-col-val { color: var(--blue-bright); font-size: 11px; line-height: 1.7; }
+
+  .footer-copy {
+    border-top: 1px solid var(--navy-mid);
+    padding-top: 14px;
+    text-align: center;
+    color: var(--navy-accent);
+    font-size: 10px;
+  }
+
+  /* ── MOBILE NAV ── */
+  @media (max-width: 700px) {
+    nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 40px 20px; }
+    h1 { font-size: 24px; }
+    section { padding: 36px 20px; }
+    .trust-bar { padding: 10px 20px; }
+    .footer-cols { flex-wrap: wrap; gap: 16px; }
+    .cta-contacts { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-orbit"><div class="nav-orbit-inner"></div></div>
+    <div class="nav-name">
+      <span class="ties">TIES</span><span class="comm">&nbsp;Communications</span>
+      <span class="nav-dba">tiesforceone</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#capabilities">Capabilities</a>
+    <a href="#compliance">Compliance</a>
+    <a href="#personnel">Personnel</a>
+    <a href="#news">News</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>DEFENSE INDUSTRIAL BASE &nbsp;·&nbsp; WOSB &nbsp;·&nbsp; CARRIER-GRADE ENGINEERING</span>
+  </div>
+  <h1>Visionary leadership.<br>Carrier-grade engineering.</h1>
+  <p class="hero-tagline">Problems solved, not guessed.</p>
+  <p class="hero-sub">Secure IT infrastructure consulting, network design, and modernization services for DoD and mission-critical environments. Strategic subcontractor partner for prime contractors requiring CMMC and FCI compliance.</p>
+  <div class="hero-actions">
+    <a href="Statement_of_Capabilities.pdf" class="btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download capabilities statement
+    </a>
+    <a href="Technical_Capability_Addendum.pdf" class="btn-primary" style="opacity:0.8;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Technical addendum
+    </a>
+    <a href="mailto:government@tiestech.net" class="btn-secondary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      government@tiestech.net
+    </a>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    CMMC Level 1 &nbsp;·&nbsp; SPRS Current
+  </div>
+  <span class="trust-dot">·</span>
+  <div class="trust-item">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    SBA WOSB Certified
+  </div>
+  <span class="trust-dot">·</span>
+  <div class="trust-item">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    SAM.gov Active
+  </div>
+  <span class="trust-dot">·</span>
+  <span class="trust-muted">UEI: C4YJE4GLDYD7</span>
+  <span class="trust-dot">·</span>
+  <span class="trust-muted">CAGE: 9RQ88</span>
+  <span class="trust-dot">·</span>
+  <span class="trust-muted">NAICS: 541512 · 541519 · 541690 · 238210</span>
+</div>
+
+<!-- CAPABILITIES -->
+<section class="bg-white" id="capabilities">
+  <p class="section-label">Core Competencies</p>
+  <h2 class="section-title">Full-spectrum infrastructure capability</h2>
+  <div class="cap-grid">
+
+    <div class="cap-card">
+      <div class="cap-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <p class="cap-title">Secure network architecture</p>
+      <p class="cap-desc">LAN/WAN, Zero-Trust, high-availability, multi-site distributed environments</p>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+      </div>
+      <p class="cap-title">Carrier-grade routing</p>
+      <p class="cap-desc">BGP, OSPF, MPLS, EVPN, SD-WAN — Tier 1 service provider protocol depth</p>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+      </div>
+      <p class="cap-title">RF &amp; wireless</p>
+      <p class="cap-desc">VHF to satellite, microwave, enterprise wireless, remote and expeditionary nodes</p>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <p class="cap-title">Performance engineering</p>
+      <p class="cap-desc">MTU, latency, throughput modeling and validation — problems others escalate</p>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+      </div>
+      <p class="cap-title">Structured cabling</p>
+      <p class="cap-desc">Cat5e/6, single &amp; multimode fiber, outside plant deployment and lifecycle</p>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+      </div>
+      <p class="cap-title">NaaS &amp; lifecycle</p>
+      <p class="cap-desc">Network as a Service reducing total cost of ownership across the full lifecycle</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ENGAGEMENT MODEL -->
+<section class="bg-gray" id="engagement">
+  <p class="section-label">How Prime Contractors Use TIES</p>
+  <h2 class="section-title">Engagement model</h2>
+  <div class="eng-grid">
+    <div class="eng-card">
+      <p class="eng-title">Overflow engineering capacity</p>
+      <p class="eng-desc">Complex network design and deployment tasks when prime resources are fully committed.</p>
+    </div>
+    <div class="eng-card">
+      <p class="eng-title">CMMC/FCI-compliant subcontractor</p>
+      <p class="eng-desc">Trusted sub for DoD infrastructure requiring verified compliance posture — documentation ready.</p>
+    </div>
+    <div class="eng-card">
+      <p class="eng-title">Escalation-level specialist</p>
+      <p class="eng-desc">Persistent performance, MTU-level, and multi-vendor interoperability failures others couldn't resolve.</p>
+    </div>
+    <div class="eng-card">
+      <p class="eng-title">Design validation &amp; peer review</p>
+      <p class="eng-desc">Protocol-level analysis and mathematical performance modeling before deployment commits.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE + PAST PERFORMANCE -->
+<section class="bg-white" id="compliance">
+  <div class="two-col">
+    <div>
+      <p class="section-label">Compliance Posture</p>
+      <h2 class="section-title">Compliance-ready partner</h2>
+      <div class="compliance-list">
+        <div class="compliance-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <p>CMMC Level 1 current — Dec 2025 through Dec 2026</p>
+        </div>
+        <div class="compliance-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <p>SPRS verified and current</p>
+        </div>
+        <div class="compliance-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <p>Aligned with 48 CFR 52.204-21 FCI protection requirements</p>
+        </div>
+        <div class="compliance-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <p>CMMC Level 2 roadmap actively in progress</p>
+        </div>
+        <div class="compliance-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <p>Audit-friendly configurations and documentation supporting prime compliance obligations</p>
+        </div>
+        <div class="compliance-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <p>Vendor-agnostic design — aligns with Prime standards and government mandates</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="section-label">Past Performance</p>
+      <h2 class="section-title">U.S. Army Reserve Command</h2>
+      <div class="past-perf-card">
+        <p class="past-perf-title">USARC Infrastructure Program</p>
+        <p class="past-perf-sub">Subcontractor: American Systems, Ciber &nbsp;·&nbsp; 2001–2012</p>
+        <div class="past-perf-list">
+          <div class="past-perf-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            <p>Enterprise cabling, fiber, and voice infrastructure</p>
+          </div>
+          <div class="past-perf-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            <p>Led Nortel → Cisco UCM migrations across 12+ sites</p>
+          </div>
+          <div class="past-perf-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            <p>Multi-site program management and execution</p>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:var(--gray-500);font-style:italic;">Additional past performance available upon request.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONNEL -->
+<section class="bg-gray" id="personnel">
+  <p class="section-label">Key Personnel</p>
+  <h2 class="section-title">Direct access — no layers, no delays</h2>
+  <div class="personnel-grid">
+
+    <div class="person-card">
+      <div class="person-header">
+        <div class="person-avatar">JW</div>
+        <div>
+          <p class="person-name">Julie A. Wussler</p>
+          <p class="person-role">CEO · MSN, RN · WOSB Principal</p>
+        </div>
+      </div>
+      <p class="person-bio">20+ years clinical and operational leadership. Drives strategy, compliance, operations, and project oversight. Clinical background brings disciplined documentation standards, high-stakes decision-making, and multi-team coordination directly applicable to federal contracting environments.</p>
+      <a href="mailto:jawussler@tiestech.net" class="person-email">jawussler@tiestech.net</a>
+    </div>
+
+    <div class="person-card">
+      <div class="person-header">
+        <div class="person-avatar">BS</div>
+        <div>
+          <p class="person-name">Brian C. Schulze</p>
+          <p class="person-role">COO · MS Mathematics · Technical Lead</p>
+        </div>
+      </div>
+      <p class="person-bio">42 years IT, 38 years carrier-grade network engineering. Current AT&amp;T core backbone contractor — CRS to DriveNets migration. Designed and deployed 3,400+ location enterprise satellite network. BGP/OSPF/MPLS operational depth at Tier 1 service provider layer. Python and R for infrastructure analytics and automation.</p>
+      <a href="mailto:government@tiestech.net" class="person-email">government@tiestech.net</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="bg-white" id="news">
+  <p class="section-label">News &amp; Awards</p>
+  <h2 class="section-title">Recent activity</h2>
+  <div class="news-list">
+
+    <div class="news-item green">
+      <div class="news-header">
+        <p class="news-title">SBA WOSB certification confirmed — TIES Communications, Inc.</p>
+        <span class="news-date">2025</span>
+      </div>
+      <p class="news-body">TIES Communications, Inc. achieves official SBA WOSB certification, strengthening federal contracting and subcontracting eligibility across all NAICS codes.</p>
+    </div>
+
+    <div class="news-item">
+      <div class="news-header">
+        <p class="news-title">CMMC Level 1 SPRS assessment completed and verified</p>
+        <span class="news-date">Dec 2025</span>
+      </div>
+      <p class="news-body">Self-assessment score submitted to the DoD Supplier Performance Risk System. CMMC Level 2 roadmap actively in progress in preparation for expanded DIB work.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA + FOOTER -->
+<section class="bg-navy" id="contact" style="padding: 44px 40px 0;">
+  <div class="cta-inner">
+    <div>
+      <p class="cta-title">Engage a proven infrastructure partner</p>
+      <p class="cta-sub">Whether supporting an agency directly or working alongside a prime, TIES Communications delivers the engineering depth, compliance posture, and accountability required for mission success.</p>
+    </div>
+    <div class="cta-contacts">
+      <div class="cta-contact-line">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        877.946.4923
+      </div>
+      <div class="cta-contact-line">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:government@tiestech.net" style="color:inherit;">government@tiestech.net</a>
+      </div>
+      <a href="mailto:government@tiestech.net?subject=Statement of Capabilities Request" class="btn-primary" style="margin-top:6px;font-size:12px;padding:8px 16px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Request statement of capabilities
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-divider">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand-name">TIES Communications, Inc.</p>
+        <p class="footer-brand-dba">dba tiesforceone &nbsp;·&nbsp; St. Charles, Missouri</p>
+        <p class="footer-brand-url">tiestech.net &nbsp;·&nbsp; tiesforceone.com</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <p class="footer-col-label">NAICS</p>
+          <p class="footer-col-val">541512 · 541519<br>541690 · 238210</p>
+        </div>
+        <div>
+          <p class="footer-col-label">PSC</p>
+          <p class="footer-col-val">D307 · D316<br>DG10 · DG01</p>
+        </div>
+        <div>
+          <p class="footer-col-label">Identifiers</p>
+          <p class="footer-col-val">UEI: C4YJE4GLDYD7<br>CAGE: 9RQ88</p>
+        </div>
+        <div>
+          <p class="footer-col-label">Status</p>
+          <p class="footer-col-val">WOSB · SAM Active<br>CMMC L1 · SPRS</p>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 TIES Communications, Inc. (dba tiesforceone) &nbsp;·&nbsp; St. Charles, MO &nbsp;·&nbsp; All rights reserved</p>
+  </div>
+</section>
+
+</body>
+</html>
